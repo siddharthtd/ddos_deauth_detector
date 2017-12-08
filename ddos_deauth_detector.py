@@ -26,4 +26,14 @@ class DeauthenticationDetector:
             self.print_values()
     return
 
-    
+
+    def print_values(self):
+        line = 0
+        for a, b in self.data.iteritems():
+            v1, v2 = eval(a)
+            print "\t[#] Deauthentication Packet : {} <---> {} | Packets : {}".format(v1, v2, b)
+            line += 1
+
+        # Backspace Trick
+        sys.stdout.write("\033[{}A".format(line))
+        return
