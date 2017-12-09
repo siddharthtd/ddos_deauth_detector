@@ -23,9 +23,8 @@ class DeauthenticationDetector:
                 self.data[str([victim1, victim2])] = self.data[str([victim1, victim2])] + 1
             else:
                 self.data[str([victim1, victim2])] = 1
-            self.print_values()
-    return
-
+        self.print_values()
+        return
 
     def print_values(self):
         line = 0
@@ -36,4 +35,9 @@ class DeauthenticationDetector:
 
         # Backspace Trick
         sys.stdout.write("\033[{}A".format(line))
+        return
+
+
+    def Sniffing_Start(self):
+        scapy.sniff(prn = self.extract_packets, *self.args, **self.kwargs)
         return
