@@ -4,45 +4,44 @@ import sys
 import scapy.all as scapy
 
 
-class Deauth_det:
+class Deauth_detect_class:
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *arguments, **kw_arguements):
 
-        self.args = args
-        self.kwargs = kwargs
+        self.arguments = arguments
+        self.kwarguments = kw_arguements
         self.data = {}
-        self.Sniffing_Start()
+        self.sniff_funct()
 
     def extract_packets(self, pkt):
 
         if pkt.haslayer(scapy.Dot11Deauth):
-            victim1 = pkt.addr1
-            victim2 = pkt.addr2
-            if str([victim1, victim2]) in self.data.keys():
-                self.data[str([victim1, victim2])] = self.data[str([victim1, victim2])] + 1
+            vic1 = pkt.addr1
+            vic2 = pkt.addr2
+            if str([vic1, vic2]) in self.data.keys():
+                self.data[str([vic1, vic2])] = self.data[str([vic1, vic2])] + 1
             else:
-                self.data[str([victim1, victim2])] = 1
-        self.print_values()
+                self.data[str([vic1, vic2])] = 1
+        self.value_print_funct()
         return
 
-    def print_values(self):
+    def value_print_funct(self):
         count = 0
         for a,b in self.data.iteritems():
-            v1, v2 = eval(a)
-            print("\nDe-authentication Packet:{}<--->{}\nPackets:{}".format(v1, v2, b))
+            vic1, vic2 = eval(a)
+            print("\nDe-authentication Packet:{}<--->{}\nPackets:{}".format(vic1, vic2, b))
             count += 1
 
-        # Backspace Trick
         sys.stdout.write("\033[{}A".format(line))
         return
 
-    def Sniffing_Start(self):
-        scapy.sniff(prn=self.extract_packets, *self.args, **self.kwargs)
+    def sniff_funct(self):
+        scapy.sniff(prn=self.extract_packets, *self.arguments, **self.kwarguments)
         return
 
 
-def main(*args, **kwargs):
-    Deauth_det(*args, **kwargs)
+def main(*arguments, **kwarguments):
+    Deauth_detect_class(*arguments, **kwarguments)
     return
 
 
