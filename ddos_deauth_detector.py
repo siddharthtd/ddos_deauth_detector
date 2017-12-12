@@ -6,10 +6,10 @@ import scapy.all as scapy
 
 class Deauth_detect_class:
 
-    def __init__(self, *arguments, **kw_arguements):
+    def __init__(self, *arguments, **keywords):
 
         self.arguments = arguments
-        self.kwarguments = kw_arguements
+        self.keywords = keywords
         self.data = {}
         self.sniff_funct()
 
@@ -27,7 +27,7 @@ class Deauth_detect_class:
 
     def value_print_funct(self):
         count = 0
-        for a,b in self.data.iteritems():
+        for a, b in self.data.iteritems():
             vic1, vic2 = eval(a)
             print("\nDe-authentication Packet:{}<--->{}\nPackets:{}".format(vic1, vic2, b))
             count += 1
@@ -36,12 +36,12 @@ class Deauth_detect_class:
         return
 
     def sniff_funct(self):
-        scapy.sniff(prn=self.extract_packets, *self.arguments, **self.kwarguments)
+        scapy.sniff(prn=self.extract_packets, *self.arguments, **self.keywords)
         return
 
 
-def main(*arguments, **kwarguments):
-    Deauth_detect_class(*arguments, **kwarguments)
+def main(*arguments, **keywords):
+    Deauth_detect_class(*arguments, **keywords)
     return
 
 
