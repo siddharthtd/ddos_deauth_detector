@@ -13,7 +13,7 @@ class Deauth_detect_class:
         self.data = {}
         self.sniff_funct()
 
-    def extract_packets(self, pkt):
+    def extract_packets_funct(self, pkt):
 
         if pkt.haslayer(scapy.Dot11Deauth):
             vic1 = pkt.addr1
@@ -36,7 +36,7 @@ class Deauth_detect_class:
         return
 
     def sniff_funct(self):
-        scapy.sniff(prn=self.extract_packets, *self.arguments, **self.keywords)
+        scapy.sniff(prn=self.extract_packets_funct, *self.arguments, **self.keywords)
         return
 
 
