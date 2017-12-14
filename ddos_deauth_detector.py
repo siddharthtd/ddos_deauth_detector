@@ -3,7 +3,6 @@ Field = {'count': (5, False), 'iface': (None, True), 'timeout': (None, False)}
 import sys
 import scapy.all as scapy
 
-
 class Deauth_detect_class:
 
     def __init__(self, *arguments, **keywords):
