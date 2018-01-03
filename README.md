@@ -12,3 +12,14 @@ extract_packets_funct is a function specifically designed to detect the packets 
 sniff_funct is a function that is used to create the Scapy.sniff function for sniffing the extracted packets.
 
 value_print_funct is used to print the values or results of the sniffing and extraction of de-authentication packets.
+
+Future Developments:
+
+Future developments will be added later on, after they are planned.
+
+
+Testing Underway.
+Repository to be made public on: January 14, 2018
+
+
+This repository will be private until then.
